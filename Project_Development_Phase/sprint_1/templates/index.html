@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+
+    <title>Nutrition Assistant</title>
+   
+    <link rel="stylesheet" href="https://nutrition-project.s3.jp-tok.cloud-object-storage.appdomain.cloud/index.css">
+    <style>
+      .options
+      {
+        background-color: #d3ccb7;
+
+      }
+      .lot
+      {
+        color: #d3ccb7;
+
+      }
+    </style>
+</head>
+<body style="background-image: url('https://nutrition-project.s3.jp-tok.cloud-object-storage.appdomain.cloud/homebg.jpg');">
+    
+
+
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-lg-5 colh heading">
+          <p class="display-3">Nutrition Assistant</p>
+        </div>
+        <div class="col-lg-7 colh">
+          <div>
+            <ul class="lists">
+              <li> <a id="c1" class="lot" href="#cont_1">Home</a></li>
+              <li onmouseover = "signinOne(this)" onmouseout="unsignin(this)"> <a id="c2" class="lot">SignIn</a></li>
+              <li onmouseover = "signinTwo(this)" onmouseout="unsignin(this)"> <a id="c3" class="lot">SignUp</a></li>
+              <li onmouseover = "visible(this)" onmouseout="unsignin(this)"> <a class="lot" id="c4" href="#abouts">About</a></li>
+            </ul>
+          </div>        
+        </div>
+      </div>
+    </div>
+
+    <div class="container-fluid content">
+      <div class="row">
+        <div class="col-lg info">
+            <p>
+              Nutritional support is the provision of adequate nutrients to maintain a 
+              healthy body weight and avoid malnutrition. The continuous delivery of 
+              high-quality and cost-effective nutritional care to patients has been 
+              shown to be an increasingly difficult task. It is observed that dieticians 
+              are requested to carry out the nutritional assessment, to manually 
+              calculate the nutritional needs and to design the everyday meal plan for 
+              each patient. In most cases, these time-consuming tasks are not completed 
+              due to lack of time or inadequate number of personnel. Development of a web-based
+              tool for calculating nutrition in food, which will help patients and clients maintain
+              their healthier lifestyles. The nutrient content calculation was planned to undertake with
+              commonly consumed traditional as well as junk foods
+            </p>
+        </div>
+        <div class="col-lg info" id="infos">
+          <div class="cont_1 pb-0">
+            <div onclick="ont()" id="l1" class="options">
+              <p><img src="https://nutrition-project.s3.jp-tok.cloud-object-storage.appdomain.cloud/home.png" width="60" height="60" alt=""><p class="list">Home</p>
+            </div>
+            <div id="l2" class="options">
+              <p><img src="https://nutrition-project.s3.jp-tok.cloud-object-storage.appdomain.cloud/login.png" width="60" height="60" alt=""><p class="list">Sign In</p>
+            </div>
+            <div id="l3" class="options">
+              <p><img src="https://nutrition-project.s3.jp-tok.cloud-object-storage.appdomain.cloud/sign-up.png" width="60" height="60" alt=""><p class="list">Sign Up</p>
+            </div>
+            <div id="l4" class="options">
+              <p><img src="https://nutrition-project.s3.jp-tok.cloud-object-storage.appdomain.cloud/info.png" width="60" height="60" alt=""><p class="list">about</p>
+            </div>
+
+          <div id="logins" class="login">
+            <div class="container" id="container">
+              <div class="form-container sign-up-container">
+                <form onsubmit="return false" method="POST" enctype="multipart/form-data">
+                <h1>Create Account</h1>
+                
+                <input type="text" name="name" placeholder="Name" required />
+                <input type="email" name="email" id="signup-mail" placeholder="Email" required />
+                <input type="password" name="pass" id="signup-pass" placeholder="Password" required />
+                <button onclick="signup_data()">Sign Up</button>
+                </form>
+              </div>
+              <div class="form-container sign-in-container">
+                <form method="POST" id="gotodash" enctype="multipart/form-data">
+                <h1>Sign in</h1>
+                  <input STYLE="display:none" type="text" name="name" placeholder="Name"/>
+                  <input type="email" name="email" id="signin-mail" placeholder="Email" required />
+                  <input type="password" name="pass" id="signin-pass" placeholder="Password" required />
+                  <a href="/forgot">Forgot your password?</a>
+                  <button onclick="validate()">Sign In</button>
+                </form>
+                
+              </div>
+              <div class="overlay-container">
+                <div class="overlay">
+                <div class="overlay-panel overlay-left">
+                  <h1>Welcome Back!</h1>
+                  <p>To keep connected with us please login with your personal info</p>
+                  <button class="ghost" id="signIn">Sign In</button>
+                </div>
+                <div class="overlay-panel overlay-right">
+                  <h1>Hello, Friend!</h1>
+                  <p>Enter your personal details and start journey with us</p>
+                  <button class="ghost" id="signUp">Sign Up</button>
+                </div>
+                </div>
+              </div>
+              </div>
+          </div>
+          <div class="about" id="abouts">
+            <p>
+              Nutrition Assistant is a web-based tool that is capable of calculating nutrition
+              from an image. It uses a food model to detect food items from images and a nutrition
+              API to calculate nutrition information.
+            </p>
+          </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+</body>
+<script>
+      
+  const signUpButton = document.getElementById('signUp');
+  const signInButton = document.getElementById('signIn');
+  const container = document.getElementById('container');
+
+  const switchone = document.getElementById('c1');
+  const switchtwo = document.getElementById("c2");
+  const switchthree = document.getElementById('c3');
+  const switchfour = document.getElementById('c4');
+
+  const Fswitchone = document.getElementById('l1');
+  const Fswitchtwo = document.getElementById("l2");
+  const Fswitchthree = document.getElementById('l3');
+  const Fswitchfour = document.getElementById('l4');
+
+  const space = document.getElementById('infos');
+
+  var pre_state = 0;
+  var stateone = 0;
+  var statetwo = 0;
+  var statethree = 0;
+
+  signUpButton.addEventListener('click', () => {o
+  container.classList.add("right-panel-active");
+});
+
+  signInButton.addEventListener('click', () => {
+  container.classList.remove("right-panel-active");
+});
+
+switchone.addEventListener('click', remover);
+switchtwo.addEventListener('click', signin);
+switchthree.addEventListener('click', Signup)
+switchfour.addEventListener('click', about);
+
+Fswitchone.addEventListener('click', remover);
+Fswitchtwo.addEventListener('click', signin);
+Fswitchthree.addEventListener('click', Signup)
+Fswitchfour.addEventListener('click', about);
+
+
+function remover() {
+
+  if(pre_state == 1){
+    pre_state = 0;
+    space.classList.remove("spaceimp");
+    document.getElementById("abouts").style.display = "none";
+    document.getElementById("logins").style.display = "none";
+    document.getElementById("l1").style.display = "flex";
+    document.getElementById("l2").style.display = "flex";
+    document.getElementById("l3").style.display = "flex";
+    document.getElementById("l4").style.display = "flex";
+}
+}
+
+function div_adder () {
+  space.classList.add("spaceimp");
+  document.getElementById("abouts").style.display = "none";
+  document.getElementById("logins").style.display = "block";
+  document.getElementById("l1").style.display = "none";
+  document.getElementById("l2").style.display = "none";
+  document.getElementById("l3").style.display = "none";
+  document.getElementById("l4").style.display = "none";
+}
+
+function about_adder () {
+  //space.classList.add("spaceimp");
+ // remover();
+  document.getElementById("abouts").style.display = "block";
+  document.getElementById("l1").style.display = "none";
+  document.getElementById("l2").style.display = "none";
+  document.getElementById("l3").style.display = "none";
+  document.getElementById("l4").style.display = "none";
+}
+
+
+function signin() {
+console.log("hi");
+  if(pre_state == 0) {
+    pre_state = 1;
+    stateone = 1;
+    statetwo = 0;
+    statethree = 0;
+    container.classList.remove("right-panel-active");
+    div_adder();
+  }else {
+    if(stateone == 0) {
+      pre_state = 1;
+      stateone = 1;
+      statetwo = 0;
+      statethree = 0;
+      container.classList.remove("right-panel-active");
+      div_adder();
+    }else {
+      remover();
+    }
+  }
+
+}
+
+function Signup() {
+  
+  if(pre_state == 0) {
+    pre_state = 1;
+    stateone = 0;
+    statetwo = 1;
+    statethree = 0;
+    container.classList.add("right-panel-active");
+    div_adder();
+  }else {
+    if(statetwo == 0) {
+      pre_state = 1;
+      stateone = 0;
+      statetwo = 1;
+      statethree = 0;
+      container.classList.add("right-panel-active");
+      div_adder();
+    }else {
+      remover();
+    }
+  }
+}
+
+function about() {
+  if(pre_state == 0){
+    pre_state = 1;
+    stateone = 0;
+    statetwo = 0;
+    statethree = 3;
+    about_adder();
+  }else{
+    if(statethree == 0){
+      remover();
+      pre_state = 1;
+      stateone = 0;
+      statetwo = 0;
+      statethree = 3;
+      about_adder();
+    }else{
+      remover();
+    }
+  }
+  
+}
+
+function unvisible(x) {
+    if(pre_state == 0) {
+      document.getElementById("l1").style.display = "none";
+      document.getElementById("l2").style.display = "none";
+      document.getElementById("l3").style.display = "none";
+      document.getElementById("l4").style.display = "none";
+    }
+    
+  }
+
+  function visible(x){
+    if(pre_state == 0) {
+      document.getElementById("abouts").style.display = "block";
+      //space.classList.add("spaceimp");
+      container.classList.add("right-panel-active");
+      document.getElementById("l1").style.display = "none";
+      document.getElementById("l2").style.display = "none";
+      document.getElementById("l3").style.display = "none";
+      document.getElementById("l4").style.display = "none";
+    }
+  }
+
+  function unsignin(x) {
+    if(pre_state == 0){
+      container.classList.remove("right-panel-active");
+      space.classList.remove("spaceimp");
+      document.getElementById("logins").style.display = "none";
+      document.getElementById("abouts").style.display = "none";
+      document.getElementById("l1").style.display = "flex";
+      document.getElementById("l2").style.display = "flex";
+      document.getElementById("l3").style.display = "flex";
+      document.getElementById("l4").style.display = "flex";
+    }
+    
+  }
+
+
+  function signinOne(x){
+    if(pre_state == 0) {
+      container.classList.remove("right-panel-active");
+      space.classList.add("spaceimp");
+      document.getElementById("logins").style.display = "block";
+      document.getElementById("l1").style.display = "none";
+      document.getElementById("l2").style.display = "none";
+      document.getElementById("l3").style.display = "none";
+      document.getElementById("l4").style.display = "none";
+    }
+  }
+
+  function signinTwo(x){
+    if(pre_state == 0) {
+      document.getElementById("logins").style.display = "block";
+      space.classList.add("spaceimp");
+      container.classList.add("right-panel-active");
+      document.getElementById("l1").style.display = "none";
+      document.getElementById("l2").style.display = "none";
+      document.getElementById("l3").style.display = "none";
+      document.getElementById("l4").style.display = "none";
+    }
+
+  function setcon(x) {
+    if(pre_state == 0) {
+      document.getElementById("abouts").style.display = "block";
+        //space.classList.add("spaceimp");
+      container.classList.add("right-panel-active");
+      document.getElementById("l1").style.display = "none";
+      document.getElementById("l2").style.display = "none";
+      document.getElementById("l3").style.display = "none";
+      document.getElementById("l4").style.display = "none";
+      }
+  }
+ 
+}
+
+    var signup_username;
+    var signup_password;
+    console.log(signup_username);
+    
+    console.log(signup_password);
+ 
+    function signup_data(){
+    signup_username = document.getElementById("signup-mail").value;
+    signup_password = document.getElementById("signup-pass").value;
+    console.log(signup_username);
+    
+    console.log(signup_password);
+    signin();
+  }
+  
+  function validate(){
+    console.log(signup_username);
+    
+    console.log(signup_password);
+    var username = document.getElementById("signin-mail").value;
+    var password = document.getElementById("signin-pass").value;
+    console.log(signup_username);
+    console.log(username);
+    console.log(signup_password);
+    console.log(password);
+    if(username == ""){
+        alert("Please enter a User Name")
+        formLogin.username.focus()
+        return false
+    }
+    if(password == ""){
+        alert("Please enter a Password")
+        formLogin.password.focus()
+        return false
+    }
+    if( username == signup_username && password == signup_password){
+        alert("Login successfully");
+        document.getElementById('gotodash').action = "dashboard.html";
+    }
+    else{
+     alert("Login failed - Please enter correct Username and Password")   
+    }
+    }
+  </script>
+<script>
+
+  function ont() {
+    document.getElementById('info').style.color = ' #d3ccb7';
+  }
+  
+</script>
+</html>
